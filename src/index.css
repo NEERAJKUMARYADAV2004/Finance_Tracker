@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0D0D0D] text-gray-200 antialiased selection:bg-[#D4AF37] selection:text-black;
+    /* Custom scrollbar to keep luxury feel without motion */
+  }
+
+  /* No animations by default */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: #D4AF37;
+  }
+  .bg-gold {
+    background-color: #D4AF37;
+  }
+  .border-gold {
+    border-color: #D4AF37;
+  }
+}
