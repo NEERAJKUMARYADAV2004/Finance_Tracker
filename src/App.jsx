@@ -6,7 +6,7 @@ import {
   Navigate,
   useLocation
 } from 'react-router-dom';
-
+console.log('App initialized');
 import { AppLayout } from './components/Layout/AppLayout';
 import { DashboardPage } from './pages/DashboardPage';
 import { AddExpensePage } from './pages/AddExpensePage';

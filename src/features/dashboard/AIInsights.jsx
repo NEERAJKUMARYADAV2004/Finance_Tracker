@@ -5,7 +5,7 @@ import { Sparkles } from 'lucide-react';
 export function AIInsights() {
   // Static mock insight text showcasing local AI capabilities
   return (
-    <Card className="bg-gradient-to-r from-surface to-background border-gold/30 p-4 flex items-start gap-4">
+    <Card className="bg-card border-gold/30 p-4 flex items-start gap-4">
       <div className="pt-1">
         <Sparkles className="w-5 h-5 text-gold" />
       </div>

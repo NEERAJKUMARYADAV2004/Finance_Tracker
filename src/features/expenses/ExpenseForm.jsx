@@ -44,7 +44,7 @@ export function ExpenseForm({ initialData = null, onSuccess }) {
   };
 
   return (
-    <Card className="max-w-md mx-auto p-5">
+    <Card className="max-w-full w-full px-4 mx-auto">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         
         <Input 

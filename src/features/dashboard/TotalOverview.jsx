@@ -12,7 +12,7 @@ export function TotalOverview() {
   const mockComparison = -2.4; 
 
   return (
-    <Card className="flex flex-col gap-4 bg-gradient-to-br from-surface to-background border-gold/20">
+    <Card className="flex flex-col gap-4 bg-card border-gold/20">
       <div className="flex justify-between items-start">
         <div>
           <p className="text-gray-400 text-sm font-medium mb-1">Total Spending (This Month)</p>

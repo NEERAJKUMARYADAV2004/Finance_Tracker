@@ -13,7 +13,7 @@ export function RecentTransactions() {
 
   if (recent.length === 0) {
     return (
-      <Card className="flex flex-col items-center justify-center py-10 text-center">
+      <Card className="flex flex-col items-center justify-center py-10 text-center bg-card">
         <p className="text-gray-400">No transactions yet.</p>
         <p className="text-sm text-gray-600">Add an expense or scan a receipt.</p>
       </Card>
@@ -31,7 +31,7 @@ export function RecentTransactions() {
         const Icon = getCategoryIcon(exp.category);
         
         return (
-          <Card key={exp.id} className="flex items-center justify-between p-3 hover:bg-surface/50">
+          <Card key={exp.id} className="flex items-center justify-between p-3 bg-card hover:bg-surface/50">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-gray-400 border border-gray-800">
                 <Icon className="w-5 h-5 stroke-[1.5px]" />
