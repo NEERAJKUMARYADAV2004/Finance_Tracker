@@ -56,27 +56,27 @@ export function SignIn() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col md:flex-row">
-      
+
       {/* LEFT SECTION - HERO SHOWCASE */}
-      <div className="flex-1 flex flex-col justify-center px-10 py-16 md:px-16 lg:px-24 xl:px-32 border-b md:border-b-0 md:border-r border-gray-800/40 bg-[#080808]">
+      <div className="flex-1 flex flex-col justify-center px-10 py-16 md:px-16 lg:px-24 xl:px-32 app-container rounded-none border-t-0 border-l-0 border-b md:border-b-0 md:border-r">
         <div className="max-w-xl w-full">
           {/* Logo / Shield Identifier */}
-          <div className="w-16 h-16 rounded-full bg-surface flex items-center justify-center mb-8 md:mb-12 border border-gold/20 shadow-[0_0_30px_rgba(212,175,55,0.05)]">
+          <div className="w-16 h-16 rounded-full bg-background flex items-center justify-center mb-8 md:mb-12 border border-gold/10 inner-glow shadow-[0_0_50px_rgba(212,175,55,0.1)]">
             <Shield className="w-8 h-8 text-gold stroke-[1.5px]" />
           </div>
-          
+
           {/* Hero Typography */}
-          <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold text-gray-50 leading-[1.1] tracking-tight mb-8">
+          <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold text-primary leading-[1.1] tracking-tight mb-8">
             {mode === 'register' ? (
               <>Own your <span className="text-gold">data.</span><br />Master your <span className="text-gold">spending.</span></>
             ) : (
               <>Welcome back to your financial <span className="text-gold">clarity.</span></>
             )}
           </h1>
-          
+
           {/* Premium Tagline */}
-          <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed tracking-wide max-w-lg">
-            {mode === 'register' 
+          <p className="text-lg md:text-xl text-secondary font-light leading-relaxed tracking-wide max-w-lg">
+            {mode === 'register'
               ? "Calculate and get insights of your expenses at your fingertips. Your data never leaves this device."
               : "Re-enter your local vault securely and continue mastering your offline finances."}
           </p>
@@ -86,16 +86,16 @@ export function SignIn() {
       {/* RIGHT SECTION - FORM PANEL */}
       <div className="w-full md:w-[480px] lg:w-[560px] flex flex-col justify-center px-8 py-16 md:px-16 bg-background">
         <div className="w-full max-w-sm mx-auto">
-          
+
           <div className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-100 mb-2">
+            <h2 className="text-2xl font-semibold text-primary mb-2">
               {mode === 'register' ? 'Create Offline Vault' : mode === 'pin' ? 'Unlock Vault' : 'Sign In'}
             </h2>
-            <p className="text-sm text-gray-500 font-medium">
-              {mode === 'register' 
-                ? 'Enter your details to generate your local account.' 
-                : mode === 'pin' 
-                  ? 'Enter your secure 4-digit App Lock PIN.' 
+            <p className="text-sm text-secondary font-medium">
+              {mode === 'register'
+                ? 'Enter your details to generate your local account.'
+                : mode === 'pin'
+                  ? 'Enter your secure 4-digit App Lock PIN.'
                   : 'Enter your registered credentials.'}
             </p>
           </div>
@@ -112,7 +112,7 @@ export function SignIn() {
               <Input icon={User} placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} required />
               <Input icon={Mail} type="email" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} required />
               <Input icon={Lock} type="password" placeholder="Secure Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-              <Button type="submit" className="w-full mt-2 py-4 text-base shadow-[0_4px_20px_0_rgba(212,175,55,0.08)]">Create Local Account</Button>
+              <Button type="submit" className="w-full mt-2 py-4 text-base shadow-[0_8px_30px_rgb(212,175,55,0.1)] hover:shadow-[0_8px_40px_rgb(212,175,55,0.2)] transition-all duration-500">Create Local Account</Button>
             </form>
           )}
 
@@ -120,7 +120,7 @@ export function SignIn() {
             <form onSubmit={handleLogin} className="w-full flex flex-col gap-5">
               <Input icon={Mail} type="email" placeholder="Email Address" value={loginEmail} onChange={(e) => { setLoginEmail(e.target.value); setErrorMsg(''); }} required />
               <Input icon={Lock} type="password" placeholder="Password" value={loginPassword} onChange={(e) => { setLoginPassword(e.target.value); setErrorMsg(''); }} required />
-              <Button type="submit" className="w-full mt-2 py-4 text-base shadow-[0_4px_20px_0_rgba(212,175,55,0.08)]">Sign In</Button>
+              <Button type="submit" className="w-full mt-2 py-4 text-base shadow-[0_8px_30px_rgb(212,175,55,0.1)] hover:shadow-[0_8px_40px_rgb(212,175,55,0.2)] transition-all duration-500">Sign In</Button>
               {pinCode && (
                 <Button type="button" variant="ghost" className="w-full text-sm mt-2 text-gray-400 hover:text-gray-200" onClick={() => { setMode('pin'); setErrorMsg(''); }}>
                   Use App Lock PIN instead
@@ -131,10 +131,10 @@ export function SignIn() {
 
           {mode === 'pin' && (
             <form onSubmit={handlePinSubmit} className="w-full flex flex-col gap-5">
-              <Input 
-                icon={KeyRound} 
+              <Input
+                icon={KeyRound}
                 type="password"
-                placeholder="0 0 0 0" 
+                placeholder="0 0 0 0"
                 maxLength={4}
                 value={pinInput}
                 onChange={(e) => { setPinInput(e.target.value.replace(/\D/g, '')); setErrorMsg(''); }}
@@ -142,17 +142,17 @@ export function SignIn() {
                 autoFocus
                 className="text-center tracking-[1.5em] font-mono text-2xl h-14"
               />
-              <Button type="submit" disabled={pinInput.length !== 4} className="w-full mt-2 py-4 text-base shadow-[0_4px_20px_0_rgba(212,175,55,0.08)]">
+              <Button type="submit" disabled={pinInput.length !== 4} className="w-full mt-2 py-4 text-base shadow-[0_8px_30px_rgb(212,175,55,0.1)] hover:shadow-[0_8px_40px_rgb(212,175,55,0.2)] transition-all duration-500">
                 Unlock
               </Button>
-              <Button type="button" variant="ghost" className="w-full text-sm mt-2 text-gray-400 hover:text-gray-200" onClick={() => { setMode('login'); setErrorMsg(''); }}>
+              <Button type="button" variant="ghost" className="w-full text-sm mt-2" onClick={() => { setMode('login'); setErrorMsg(''); }}>
                 Use Password instead
               </Button>
             </form>
           )}
-          
+
           {/* Bottom Trust Indicator */}
-          <div className="mt-12 flex items-center gap-2 text-xs text-gray-600 font-medium tracking-wide">
+          <div className="mt-12 flex items-center gap-2 text-xs text-secondary font-medium tracking-wide">
             <Shield className="w-4 h-4" />
             <span>100% Client-Side Encryption</span>
           </div>

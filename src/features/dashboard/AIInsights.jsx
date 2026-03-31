@@ -11,7 +11,7 @@ export function AIInsights() {
       </div>
       <div>
         <h4 className="text-sm font-semibold text-gold mb-1">AI Assistant Insight</h4>
-        <p className="text-sm text-gray-300 leading-relaxed">
+        <p className="text-sm text-secondary leading-relaxed">
           Based on your recent history, your "Food & Dining" spending is trending 12% higher this week. Consider packing lunch for the next two days to stay under budget.
         </p>
       </div>

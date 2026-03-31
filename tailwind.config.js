@@ -9,26 +9,24 @@ export default {
     extend: {
       colors: {
         background: 'var(--background)',
-        gold: '#D4AF37',
         card: 'var(--card)',
         surface: 'var(--surface)',
+        border: 'var(--border)',
+        gold: 'var(--gold)',
+        primary: 'var(--text-primary)',
+        secondary: 'var(--text-secondary)',
+        brand: '#D4AF37',
+        glass: {
+          dark: 'rgba(18, 18, 18, 0.7)',
+          light: 'rgba(255, 255, 255, 0.6)',
+        }
+      },
+      backdropBlur: {
+        xs: '2px',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      // Completely removing transition duration and properties for a static feel
-      transitionProperty: {
-        none: 'none',
-        all: 'none',
-        default: 'none',
-        colors: 'none',
-        opacity: 'none',
-        shadow: 'none',
-        transform: 'none',
-      },
-      animation: {
-        none: 'none',
-      }
     },
   },
   plugins: [],

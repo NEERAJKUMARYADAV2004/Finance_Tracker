@@ -19,8 +19,8 @@ export function AddExpensePage() {
       <VoiceAssistant onConfirm={handleSmartParsed} />
       <div className="flex flex-col gap-6">
         <header className="mb-2">
-          <h1 className="text-2xl font-bold text-gray-100">Add Transaction</h1>
-          <p className="text-gray-400 text-sm">Log an expense manually or use AI parsing</p>
+          <h1 className="text-2xl font-bold text-primary">Add Transaction</h1>
+          <p className="text-secondary text-sm">Log an expense manually or use AI parsing</p>
         </header>
 
         <SmartInput onParsed={handleSmartParsed} />

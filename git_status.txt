@@ -1,0 +1,42 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/components/Layout/AppLayout.jsx
+	modified:   src/components/Layout/BottomNav.jsx
+	modified:   src/components/UI/Button.jsx
+	modified:   src/components/UI/Card.jsx
+	modified:   src/components/UI/Input.jsx
+	modified:   src/features/auth/Profile.jsx
+	modified:   src/features/auth/SignIn.jsx
+	modified:   src/features/dashboard/AIInsights.jsx
+	modified:   src/features/dashboard/BudgetWidgets.jsx
+	modified:   src/features/dashboard/RecentTransactions.jsx
+	modified:   src/features/dashboard/TotalOverview.jsx
+	modified:   src/features/expenses/ExpenseForm.jsx
+	modified:   src/features/expenses/ExpenseList.jsx
+	modified:   src/features/input/ReceiptScanner.jsx
+	modified:   src/features/input/SmartInput.jsx
+	modified:   src/features/input/VoiceAssistant.jsx
+	modified:   src/features/privacy/AppLock.jsx
+	modified:   src/index.css
+	modified:   src/pages/AddExpensePage.jsx
+	modified:   src/pages/DashboardPage.jsx
+	modified:   src/pages/ReceiptScannerPage.jsx
+	modified:   src/pages/SettingsPage.jsx
+	modified:   src/pages/TransactionsPage.jsx
+	modified:   src/store/useExpenseStore.js
+	modified:   src/store/useUIStore.js
+	modified:   src/utils/categoryIcons.js
+	modified:   tailwind.config.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	git_status.txt
+	src/components/UI/ThemeToggle.jsx
+	src/utils/currencies.js
+	src/utils/formatCurrency.js
+
+no changes added to commit (use "git add" and/or "git commit -a")

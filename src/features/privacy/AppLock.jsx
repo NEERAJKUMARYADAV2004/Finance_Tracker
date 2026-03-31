@@ -32,8 +32,8 @@ export function AppLock() {
   return (
     <div className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center px-6">
       <Lock className="w-12 h-12 text-gold mb-6 stroke-[1.5px]" />
-      <h1 className="text-2xl font-bold text-gray-100 mb-2">App Locked</h1>
-      <p className="text-gray-400 mb-8 text-center text-sm">
+      <h1 className="text-2xl font-bold text-primary mb-2">App Locked</h1>
+      <p className="text-secondary mb-8 text-center text-sm">
         Enter your 4-digit PIN to access your offline data
       </p>
 
@@ -47,7 +47,7 @@ export function AppLock() {
                 ? 'bg-gold border-gold' 
                 : error 
                   ? 'border-red-500' 
-                  : 'border-surface'
+                  : 'border-border'
             }`} 
           />
         ))}
@@ -61,7 +61,7 @@ export function AppLock() {
           <button
             key={num}
             onClick={() => handleKeyPress(num.toString())}
-            className="w-16 h-16 rounded-full bg-surface text-2xl font-medium flex items-center justify-center hover:bg-surface/80 active:bg-surface/50 mx-auto"
+            className="w-16 h-16 rounded-full bg-surface text-2xl font-medium text-primary flex items-center justify-center hover:bg-surface/80 active:bg-surface/50 mx-auto border border-border"
           >
             {num}
           </button>
@@ -69,13 +69,13 @@ export function AppLock() {
         <div /> {/* Empty slot */}
         <button
           onClick={() => handleKeyPress('0')}
-          className="w-16 h-16 rounded-full bg-surface text-2xl font-medium flex items-center justify-center hover:bg-surface/80 active:bg-surface/50 mx-auto"
+          className="w-16 h-16 rounded-full bg-surface text-2xl font-medium text-primary flex items-center justify-center hover:bg-surface/80 active:bg-surface/50 mx-auto border border-border"
         >
           0
         </button>
         <button
           onClick={handleBackspace}
-          className="w-16 h-16 rounded-full bg-transparent text-gray-400 flex items-center justify-center hover:text-gray-200 active:text-gold mx-auto"
+          className="w-16 h-16 rounded-full bg-transparent text-secondary flex items-center justify-center hover:text-primary active:text-gold mx-auto"
         >
           DEL
         </button>

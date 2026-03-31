@@ -3,18 +3,45 @@
 @tailwind utilities;
 
 @layer base {
-    /* Hide number input spinners (up/down arrows) for all browsers */
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    input[type=number] {
-      -moz-appearance: textfield; /* Firefox */
-    }
+  :root {
+    --background: #F3F4F6;
+    --foreground: #111827;
+    --card: #F9FAFB;
+    --surface: #F3F4F6;
+    --border: #E5E7EB;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --gold: #D4AF37;
+  }
+
+  .dark {
+    --background: #080808;
+    --foreground: #F3F4F6;
+    --card: rgba(255, 255, 255, 0.03);
+    --surface: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.08); /* Softened border */
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+    --gold: #D4AF37;
+  }
+
+  /* Hide number input spinners (up/down arrows) for all browsers */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield; /* Firefox */
+  }
+
   body {
-    @apply bg-[#0D0D0D] text-gray-200 antialiased selection:bg-[#D4AF37] selection:text-black;
-    /* Custom scrollbar to keep luxury feel without motion */
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased selection:bg-gold selection:text-black;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
 
   html {
@@ -26,21 +53,50 @@
     display: none;
   }
 
-  /* No animations by default */
+  /* Subtle transition for theme switching */
   * {
-    transition: none !important;
-    animation: none !important;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+}
+
+@layer components {
+  .app-container {
+    @apply rounded-2xl border transition-all duration-300;
+    /* Using [value] for on-the-fly colors to avoid "class does not exist" errors */
+    @apply dark:bg-black/40 dark:border-white/10 dark:backdrop-blur-md;
+    @apply bg-white/60 border-black/5 backdrop-blur-md shadow-sm;
+  }
+
+  .app-input {
+    @apply w-full rounded-xl border px-4 py-3 outline-none transition-all;
+    
+    /* Dark Mode Styling: #121212 at 70% opacity */
+    @apply dark:bg-[#121212]/70 dark:border-white/10 dark:text-white dark:placeholder-zinc-500;
+    
+    /* Light Mode Styling: White at 60% opacity */
+    @apply bg-white/60 border-zinc-200 text-zinc-900 placeholder-zinc-400;
+    
+    /* Interactive States: Using your Gold Brand color #D4AF37 */
+    @apply focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/20;
+  }
+
+  .app-dropdown {
+    @apply rounded-xl border shadow-xl overflow-hidden;
+    @apply dark:bg-[#121212] dark:border-white/10;
+    @apply bg-white border-zinc-200;
   }
 }
 
 @layer utilities {
   .text-gold {
-    color: #D4AF37;
+    color: var(--gold);
   }
   .bg-gold {
-    background-color: #D4AF37;
+    background-color: var(--gold);
   }
   .border-gold {
-    border-color: #D4AF37;
+    border-color: var(--gold);
   }
 }

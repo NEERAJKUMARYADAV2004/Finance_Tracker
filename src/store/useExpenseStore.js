@@ -15,6 +15,9 @@ export const useExpenseStore = create(
       categories: initialCategories,
       budget: 5000,
       savingsGoal: 10000,
+      baseCurrency: 'USD',
+
+      setBaseCurrency: (currencyCode) => set({ baseCurrency: currencyCode }),
 
       addExpense: (expense) => set((state) => ({
         expenses: [{ ...expense, id: crypto.randomUUID(), createdAt: Date.now() }, ...state.expenses]
@@ -30,7 +33,7 @@ export const useExpenseStore = create(
 
       addCategory: (category) => set((state) => {
         if (!state.categories.includes(category)) {
-          return { categories: [...state.categories, category] };
+           return { categories: [...state.categories, category] };
         }
         return state;
       }),

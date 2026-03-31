@@ -12,8 +12,8 @@ export function DashboardPage() {
     <div className="flex flex-col gap-6">
       <header className="flex justify-between items-center mb-2">
         <div>
-          <h1 className="text-2xl font-bold text-gray-100">Hello, {user?.name || 'User'}</h1>
-          <p className="text-gray-400 text-sm">Here's your offline summary</p>
+          <h1 className="text-2xl font-bold text-primary">Hello, {user?.name || 'User'}</h1>
+          <p className="text-secondary text-sm">Here's your offline summary</p>
         </div>
       </header>
 

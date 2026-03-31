@@ -29,8 +29,8 @@ export function ReceiptScanner({ onExtracted }) {
         {state === 'idle' && (
           <>
             <div className="absolute inset-8 border-2 border-dashed border-gray-600 rounded-xl" />
-            <Scan className="w-12 h-12 text-gray-600 mb-4 stroke-[1px]" />
-            <p className="text-gray-500 text-sm">Align receipt within frame</p>
+            <Scan className="w-12 h-12 text-gray-500 mb-4 stroke-[1px]" />
+            <p className="text-gray-400 text-sm">Align receipt within frame</p>
           </>
         )}
         

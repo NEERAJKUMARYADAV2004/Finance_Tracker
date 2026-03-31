@@ -70,8 +70,8 @@ export function Profile() {
   return (
     <div className="flex flex-col gap-6">
       <header className="mb-2">
-        <h1 className="text-2xl font-bold text-gray-100">Profile</h1>
-        <p className="text-gray-400 text-sm">Manage your offline identity</p>
+        <h1 className="text-2xl font-bold text-primary">Profile</h1>
+        <p className="text-secondary text-sm">Manage your offline identity</p>
       </header>
 
       {/* User Info Card */}
@@ -80,8 +80,8 @@ export function Profile() {
           <User className="w-7 h-7 text-gold stroke-[1.5px]" />
         </div>
         <div className="flex-1">
-          <h2 className="text-lg font-semibold text-gray-100">{user?.name || 'Local User'}</h2>
-          <p className="text-sm text-gray-400">{user?.email}</p>
+          <h2 className="text-lg font-semibold text-primary">{user?.name || 'Local User'}</h2>
+          <p className="text-sm text-secondary">{user?.email}</p>
           <div className="flex items-center gap-1 text-xs text-green-400 mt-1">
             <Shield className="w-3 h-3" />
             <span>100% Offline Storage</span>
@@ -91,14 +91,14 @@ export function Profile() {
 
       {/* Security Actions */}
       <div className="space-y-3">
-        <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider ml-1">Security</h3>
+        <h3 className="text-sm font-medium text-secondary/60 uppercase tracking-wider ml-1">Security</h3>
         <Card className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <KeyRound className="w-5 h-5 text-gray-400" />
+              <KeyRound className="w-5 h-5 text-secondary" />
               <div>
-                <p className="text-gray-200 font-medium">App Lock PIN</p>
-                <p className="text-xs text-gray-500">{pinCode ? 'Enabled' : 'Disabled'}</p>
+                <p className="text-primary font-medium">App Lock PIN</p>
+                <p className="text-xs text-secondary">{pinCode ? 'Enabled' : 'Disabled'}</p>
               </div>
             </div>
             {pinCode ? (
@@ -111,7 +111,7 @@ export function Profile() {
                   placeholder="0000" 
                   value={newPin}
                   onChange={(e) => setNewPin(e.target.value.replace(/\D/g, ''))}
-                  className="w-16 bg-surface border border-gray-700 rounded-lg px-2 py-1 text-center text-gray-200 focus:outline-none focus:border-gold"
+                  className="app-input w-16 px-2 py-1 text-center"
                 />
                 <Button variant="secondary" size="sm" disabled={newPin.length !== 4} onClick={handleSetPin}>Set</Button>
               </div>
@@ -122,16 +122,16 @@ export function Profile() {
 
       {/* Data Actions */}
       <div className="space-y-3">
-        <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider ml-1">Data Management</h3>
+        <h3 className="text-sm font-medium text-secondary/60 uppercase tracking-wider ml-1">Data Management</h3>
         <Card className="flex flex-col gap-2 relative">
           
-          <Button variant="ghost" className="justify-start text-gray-300" icon={Download} onClick={handleExport}>
+          <Button variant="ghost" className="justify-start" icon={Download} onClick={handleExport}>
             Export Data (JSON)
           </Button>
 
           <Button 
             variant="ghost" 
-            className="justify-start text-gray-300" 
+            className="justify-start" 
             icon={Upload} 
             onClick={() => document.getElementById('json-upload-input').click()}
           >

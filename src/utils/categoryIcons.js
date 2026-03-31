@@ -1,13 +1,14 @@
 import { 
   Home, Zap, ShoppingCart, Car, HeartPulse, CreditCard, Baby,
   Gamepad2, Utensils, Smile, Shirt, Palette, Plane, HelpCircle,
-  ShoppingBag, Coffee
+  ShoppingBag, Coffee, Tag
 } from 'lucide-react';
 
-export const categoryIcons = {
+export const categoryToIcon = {
   'Housing': Home,
   'Utilities': Zap,
   'Food': ShoppingCart,
+  'Food & Beverages': Coffee,
   'Transportation': Car,
   'Healthcare': HeartPulse,
   'Debt Payments': CreditCard,
@@ -15,10 +16,11 @@ export const categoryIcons = {
   'Entertainment': Gamepad2,
   'Dining Out': Utensils,
   'Personal Care': Smile,
+  'Shopping': ShoppingBag,
   'Clothing & Accessories': Shirt,
   'Hobbies & Activities': Palette,
   'Travel & Vacations': Plane,
-  'Other': HelpCircle
+  'Other': Tag
 };
 
 export const getCategoryIcon = (category) => {
@@ -29,5 +31,5 @@ export const getCategoryIcon = (category) => {
     'Groceries': ShoppingCart,
   };
   
-  return categoryIcons[category] || legacyMaps[category] || HelpCircle;
+  return categoryToIcon[category] || legacyMaps[category] || Tag;
 };

@@ -16,20 +16,50 @@ export function SmartInput({ onParsed }) {
     // Simulate AI parsing local delay
     setTimeout(() => {
       setIsProcessing(false);
-      // Mock logic: Extracting number as amount, basic keyword for category
-      const words = text.split(' ');
-      const amountWord = words.find(w => w.includes('$') || !isNaN(w));
-      const amount = amountWord ? parseFloat(amountWord.replace('$', '')) : 0;
+      // Smart extraction using Unicode currency symbols
+      const priceRegex = /(?:\p{Sc}\s*)?(\d+(?:\.\d+)?)(?:\s*\p{Sc})?/u;
+      const match = text.match(priceRegex);
       
-      const lower = text.toLowerCase();
+      let amount = 0;
+      let remainingText = text;
+      
+      if (match) {
+        amount = parseFloat(match[1]);
+        remainingText = text.replace(match[0], '').trim();
+      }
+      
       let category = 'Other';
-      if (lower.includes('coffee') || lower.includes('lunch') || lower.includes('dinner')) category = 'Food & Dining';
-      if (lower.includes('uber') || lower.includes('gas') || lower.includes('train')) category = 'Transportation';
+      
+      const categoryMap = {
+        "Housing": ["rent", "house", "mortgage", "property tax", "maintenance", "brokerage", "painting", "plumbing", "repairs", "furniture", "no-broker", "magicbricks", "urban company", "electrician", "flooring", "renovation", "insulation", "gardening", "cleaning", "pest control", "locksmith"],
+        "Utilities": ["electricity", "water bill", "wifi", "broadband", "jio fiber", "airtel", "gas bill", "cylinder", "electricity", "sewer", "trash", "mobile recharge", "postpaid", "prepaid", "trash collection", "solar", "inverter", "heating", "cooling", "utility bill"],
+        "Food": ["grocery", "milk", "vegetables", "bigbasket", "blinkit", "zepto", "reliance fresh", "supermarket", "eggs", "meat", "fruits", "bread", "snacks", "spices", "cooking oil", "flour", "rice", "organic", "bakery", "dairy"],
+        "Transportation": ["uber", "ola", "auto", "metro", "petrol", "diesel", "cng", "parking", "toll", "fastag", "bus fare", "train ticket", "irctc", "rapido", "mechanic", "car wash", "tyre", "oil change", "flight", "alignment"],
+        "Healthcare": ["doctor", "medicine", "pharmacy", "dentist", "hospital", "clinic", "therapy", "gym", "protein", "supplements", "1mg", "apollo", "blood test", "surgery", "eyewear", "lenskart", "insurance premium", "first aid", "physiotherapy", "vaccination"],
+        "Debt Payments": ["loan", "emi", "credit card bill", "interest", "personal loan", "car loan", "student loan", "overdraft", "hdfc bank", "icici bank", "sbi loan", "collection", "repayment", "principal", "late fee", "settlement", "bank charge", "pay later", "slice", "cred"],
+        "Childcare": ["school fee", "diapers", "baby food", "toys", "nanny", "daycare", "tution", "stationery", "uniform", "babysitting", "pampers", "kindergarten", "books", "firstcry", "play school", "summer camp", "pediatrician", "stroller", "formula", "kid activity"],
+        "Entertainment": ["fun", "movie", "pvr", "inox", "netflix", "hotstar", "gaming", "party", "club", "concert", "theatre", "museum", "bowling", "arcade", "bookmyshow", "ps5", "steam", "spotify", "youtube premium", "festival"],
+        "Dining Out": ["zomato", "swiggy", "starbucks", "cafe", "restaurant", "dinner", "lunch", "breakfast", "takeout", "delivery", "mcdonalds", "kfc", "pizza", "dominos", "street food", "fine dining", "pub", "bar", "tip", "brunch"],
+        "Personal Care": ["salon", "haircut", "spa", "skincare", "makeup", "shampoo", "perfume", "grooming", "massage", "barber", "facials", "deodorant", "sunscreen", "cosmetics", "manicure", "pedicure", "waxing", "body wash", "trimmer"],
+        "Clothing & Accessories": ["clothes", "shirt", "jeans", "shoes", "sneakers", "watch", "jewelry","shoe", "bag", "belt", "sunglasses", "jacket", "outfit", "brand", "boutique"],
+        "Hobbies & Activities": ["painting", "photography", "camera", "guitar", "piano", "sports", "badminton", "cricket", "football", "collectible", "knitting", "pottery", "workshop", "course", "udemy", "coursera", "membership", "hiking", "trekking", "fishing"],
+        "Travel & Vacations": ["hotel", "airbnb", "resort", "booking.com", "makemytrip", "expedia", "passport", "visa", "sightseeing", "souvenir", "luggage", "rental car", "homestay", "cruise", "adventure", "safari", "trip", "weekend getaway", "staycation", "travel insurance"],
+        "Shopping": ["amazon", "flipkart","walmart","meesho","myntra","ajio","nykaa","zara","h&m","nike", "adidas", "mall", "electronics", "online"]
+      };
+
+      for (const [catName, keywords] of Object.entries(categoryMap)) {
+        if (keywords.some(keyword => new RegExp(`\\b${keyword}\\b`, 'i').test(remainingText))) {
+          category = catName;
+          break;
+        }
+      }
+
+      const words = remainingText.split(' ');
 
       onParsed({
         amount: amount || 0,
         category,
-        merchant: words.find(w => w[0] === w[0].toUpperCase() && !w.includes('$')) || '',
+        merchant: words.find(w => w && w[0] === w[0].toUpperCase()) || '',
         notes: text,
         date: new Date().toISOString().split('T')[0]
       });
@@ -47,7 +77,7 @@ export function SmartInput({ onParsed }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           disabled={isProcessing}
-          className="flex-1 bg-transparent border-none text-gray-100 placeholder:text-gray-600 focus:outline-none py-3"
+          className="flex-1 bg-transparent border-none text-primary dark:text-white placeholder:text-secondary/50 dark:placeholder-zinc-500 focus:outline-none py-3"
         />
         <button 
           type="submit" 

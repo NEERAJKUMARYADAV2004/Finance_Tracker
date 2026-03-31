@@ -15,8 +15,8 @@ export function ReceiptScannerPage() {
   return (
     <div className="flex flex-col gap-6">
       <header className="mb-2">
-        <h1 className="text-2xl font-bold text-gray-100">Scan Receipt</h1>
-        <p className="text-gray-400 text-sm">Offline optical character recognition simulation</p>
+        <h1 className="text-2xl font-bold text-primary">Scan Receipt</h1>
+        <p className="text-secondary text-sm">Offline optical character recognition simulation</p>
       </header>
 
       <ReceiptScanner onExtracted={handleExtracted} />
